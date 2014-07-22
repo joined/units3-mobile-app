@@ -1,0 +1,18 @@
+/* Empty. Add your own CSS if you like */
+div.staylogged {
+	font-size: 10pt;
+}
+
+ion-content {
+	background-color: #f5f5f5;
+}
+
+div.col {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+a.item {
+	cursor: pointer;
+}

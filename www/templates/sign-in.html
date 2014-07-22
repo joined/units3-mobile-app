@@ -1,0 +1,29 @@
+<ion-nav-bar class="bar bar-header bar-dark"></ion-nav-bar>
+<ion-view title="Login">
+  <ion-content>
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Username</span>
+        <input type="text" ng-model="user.username">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Password</span>
+        <input type="password" ng-model="user.password">
+      </label>
+      <div class="item item-toggle staylogged">
+        Rimani collegato
+        <label class="toggle toggle-assertive">
+          <input type="checkbox" ng-model="user.staylogged">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="padding">
+      <button class="button button-block button-dark" ng-click="signIn(user)">
+        Collegati
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

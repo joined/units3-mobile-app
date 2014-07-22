@@ -1,0 +1,25 @@
+<ion-view title="Libretto">
+<ion-content padding="true">
+  <h3>Libretto</h3>
+  <p>
+  <div class="card" ng-repeat="esame in esami | filter: {superato:true}">
+	  <a class="item" ng-click="openModal(esame)">
+	  	<div class="row">
+	    	<div class="col">
+	    		<b>{{esame.nome}}</b>
+	    	</div>
+	    	<div class="col col-10">
+	    		{{esame.voto}}
+	    	</div>
+	    	<div class="col col-20">
+	    		{{esame.data}}
+	    	</div>
+	    	<div class="col col-10">
+	    		{{esame.crediti}}
+	    	</div>
+	  	</div>
+	  </a>
+  </div>
+  </p>
+</ion-content>
+</ion-view>

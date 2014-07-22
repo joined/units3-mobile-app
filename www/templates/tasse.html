@@ -1,0 +1,18 @@
+<ion-view title="Tasse">
+<ion-content padding="true">
+  <h3>Tasse</h3>
+  <p>
+  	<div class="card" ng-repeat="tassa in tasse | orderBy : 'codice_fattura' : true">
+		<div class="item item-divider">
+		  {{tassa.descrizione}}
+		</div>
+		<div class="item item-text-wrap">
+		  {{tassa.codice_fattura}}
+		</div>
+		<div class="item item-divider">
+		  {{tassa.importo.toFixed(2).replace('.',',')}} €
+		</div>
+	</div>
+  </p>
+</ion-content>
+</ion-view>
