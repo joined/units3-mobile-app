@@ -15,7 +15,7 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 })
 
 .controller('SignInCtrl', function($scope, $state, $ionicLoading, $ionicPopup, CordovaNetwork, localStorageService, webapi) {
-	$scope.user = {staylogged: false};
+	$scope.user = {staylogged: true};
 
 	$scope.showAlert = function(testo) {
 		// Show error alert with custom text
