@@ -129,16 +129,24 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 .controller('HomeCtrl', function($scope, localStorageService) {
 	// This should update userinfo everytime localstorage changes
 	// but it doesn't seem to work
-	$scope.$watch(localStorageService.get('data'), function() {
-	   $scope.userinfo = localStorageService.get('data').home;
+	$scope.$watch(function() {
+		// value to watch for changes
+		return angular.toJson(localStorageService.get('data').home)
+	}, function () {
+		// change to make
+		$scope.userinfo = localStorageService.get('data').home;
 	});
 })
 
 .controller('LibrettoCtrl', function($scope, localStorageService, $ionicModal) {
 	// This should update esami everytime localstorage changes
 	// but it doesn't seem to work
-	$scope.$watch(localStorageService.get('data'), function() {
-	   $scope.esami = localStorageService.get('data').libretto;
+	$scope.$watch(function() {
+		// value to watch for changes
+		return angular.toJson(localStorageService.get('data').libretto)
+	}, function () {
+		// change to make
+		$scope.esami = localStorageService.get('data').libretto;
 	});
 
 	// Modal showing exam details
@@ -169,15 +177,24 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 .controller('AppelliCtrl', function($scope, localStorageService) {
 	// This should update local data everytime localstorage changes
 	// but it doesn't seem to work
-	$scope.$watch(localStorageService.get('data'), function() {
-	   $scope.appelli = localStorageService.get('data').prenotazione_appelli;
+
+	$scope.$watch(function() {
+		// value to watch for changes
+		return angular.toJson(localStorageService.get('data').prenotazione_appelli)
+	}, function () {
+		// change to make
+		$scope.appelli = localStorageService.get('data').prenotazione_appelli;
 	});
 })
 
 .controller('TasseCtrl', function($scope, localStorageService) {
 	// This should update local data everytime localstorage changes
 	// but it doesn't seem to work
-	$scope.$watch(localStorageService.get('data'), function() {
-	   $scope.tasse = localStorageService.get('data').pagamenti;
+	$scope.$watch(function() {
+		// value to watch for changes
+		return angular.toJson(localStorageService.get('data').pagamenti)
+	}, function () {
+		// change to make
+		$scope.tasse = localStorageService.get('data').pagamenti;
 	});
 });

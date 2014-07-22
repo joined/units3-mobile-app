@@ -12,7 +12,6 @@ angular.module('units3.services', ['base64'])
                 'Authorization': 'Basic ' + encoded_auth
             };
 
-
             return $http.get(
                 'http://api.units3.tk/?select=home,libretto,prenotazione_appelli,pagamenti',
                 {withCredentials: true, timeout: 5000}
