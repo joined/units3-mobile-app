@@ -1,6 +1,6 @@
 angular.module('units3.services', ['base64'])
 
-.factory('webapi', function($http, $base64) {
+.factory('WebApi', function($http, $base64) {
     return {
         // Get user data
         getData: function(user) {
@@ -9,24 +9,114 @@ angular.module('units3.services', ['base64'])
 
             // Set authorization header for HTTP Basic auth
             $http.defaults.headers.common = {
-                'Authorization': 'Basic ' + encoded_auth
+                'Authorization': 'Basic ' + encoded_auth,
             };
 
             return $http.get(
-                'http://api.units3.tk/?select=home,libretto,prenotazione_appelli,pagamenti',
-                {withCredentials: true, timeout: 5000}
-                ).then(
-                    function(result) {
-                        // If fetching went ok, set flag
-                        result.success = true;
-                        return result;
-                    }, 
-                    function(result) {
-                        // If fetching failed, set flag
-                        result.success = false;
-                        return result;
-                    }
-                );
+                // 'http://api.units3.tk/?select=home,libretto,prenotazione_appelli,pagamenti',
+                'http://localhost:5000/?select=home,libretto,prenotazione_appelli,pagamenti',
+                {timeout: 5000});
+        }
+    };
+})
+
+.service('Utils', function($state, $ionicPopup, $ionicLoading, CordovaNetwork, WebApi, localStorageService) {
+    Utils = this;
+
+    this.refreshIcon = 'ion-refresh';
+
+    this.showAlert = function (text) {
+        // Show alert
+        $ionicPopup.alert({
+            title: 'Errore',
+            template: text,
+            okType: 'button-assertive'
+        });
+    };
+
+    this.showLoading = function() {
+        // Show loading popup
+        $ionicLoading.show({
+            template: 'Caricamento... <i class="icon ion-loading-c"></i>'
+        });
+    };
+    
+    this.hideLoading = function() {
+        // Hide loading popup
+        $ionicLoading.hide();
+    };
+
+    this.logout = function() {
+        // Clear local data and go to signin page
+        localStorageService.clearAll();
+        $state.go('signin');
+    };
+
+    this.saveData = function(user, data) {
+        localStorageService.set('data', data);
+        localStorageService.set('user', user);
+    };
+
+    this.loggedAndStay = function() {
+        return localStorageService.get('user')
+            && localStorageService.get('user').staylogged;
+    };
+
+    this.signIn = function(user) {
+        // Login handler
+        if (!user.username || !user.password) {
+            Utils.showAlert('Inserisci le credenziali.');
+        }
+        else if (!CordovaNetwork.isOnline()) {
+            // If we are offline, show an alert.
+            Utils.showAlert('Sei offline. Connettiti e riprova.');
+        } else {
+            // Show loading popup
+            Utils.showLoading();
+
+            // Get user data
+            WebApi.getData(user).then(
+                function(result) {
+                    // Handle success
+                    Utils.hideLoading();
+
+                    Utils.showAlert(angular.toJson(result));
+                }, 
+                function(result) {
+                    // Handle error
+                    Utils.hideLoading();
+
+                    Utils.showAlert(angular.toJson(result));
+                }
+            );
+        }
+    };
+
+    this.updateData = function() {
+        // Refresh handler
+        if (!CordovaNetwork.isOnline()) {
+            // If we are offline, show an alert.
+            Utils.showAlert('Sei offline. Connettiti e riprova.');
+        } else {
+            // On refresh button click, make icon spin
+            Utils.refreshIcon = 'ion-refreshing';
+
+            // Get user info from local storage
+            user = localStorageService.get('user');
+
+            // Get user data
+            WebApi.getData(user).then(
+                function(result) {
+                    // Handle success
+                    Utils.refreshIcon = 'ion-refresh';
+                    Utils.showAlert(angular.toJson(result));
+                }, 
+                function(result) {
+                    // Handle error
+                    Utils.refreshIcon = 'ion-refresh';
+                    Utils.showAlert(angular.toJson(result));
+                }
+            );
         }
     };
 })

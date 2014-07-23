@@ -1,129 +1,36 @@
 angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorageModule'])
 
-.controller('DefaultCtrl', function($scope, $state, localStorageService) {
-	// Default state controller which is opened when app is opened for the
+.controller('DefaultCtrl', function($state, Utils, localStorageService) {
+	// Controller of the default state opened when app is started for the
 	// first time, or when it's closed and opened again
-	if (localStorageService.get('user') && localStorageService.get('user').staylogged) {
+	if (Utils.loggedAndStay()) {
 		// If user is set, and he asked to stay logged in, go to home
 		$state.go('mainmenu.home');
 	} else {
 		// If user is not set, or if he asked not to stay logged in,
 		// clear storage and go to signin
-		localStorageService.clearAll();
-		$state.go('signin');
+		Utils.logout();
 	}
 })
 
-.controller('SignInCtrl', function($scope, $state, $ionicLoading, $ionicPopup, CordovaNetwork, localStorageService, webapi) {
+.controller('SignInCtrl', function($scope, Utils) {
 	$scope.user = {staylogged: true};
 
-	$scope.showAlert = function(testo) {
-		// Show error alert with custom text
-		$ionicPopup.alert({
-			title: 'Errore',
-			template: testo,
-			okType: 'button-assertive'
-		});
-	};
-	$scope.showLoading = function() {
-		// Show loading popup
-		$ionicLoading.show({
-			template: 'Caricamento... <i class="icon ion-loading-c"></i>'
-		});
-	};
-	$scope.hideLoading = function() {
-		// Hide loading popup
-		$ionicLoading.hide();
-	};
-
-	$scope.signIn = function(user) {
-		// Login handler
-		if (!user.username || !user.password) {
-			$scope.showAlert('Inserisci le credenziali.');
-		}
-		else if (!CordovaNetwork.isOnline()) {
-			// If we are offline, show an alert.
-			$scope.showAlert('Sei offline. Connettiti e riprova.');
-		} else {
-			// Show loading popup
-			$scope.showLoading();
-
-			// Get user data
-			webapi.getData(user).then(function(result) {
-				// When finished, hide loading popup
-				$scope.hideLoading();
-
-				if (!result.success) {
-					// If the request failed, show an alert
-					if (result.status == 401) {
-						$scope.showAlert('Credenziali non valide.');
-					} else {
-						$scope.showAlert('Errore di rete.');
-					}
-				} else {
-					// If the request succeded, save data in localstorage
-					localStorageService.set('data', result.data);
-					localStorageService.set('user', user);
-
-					// Then go to main menu
-					$state.go('mainmenu.home');
-				}
-			});
-		}
-	};
+	$scope.signIn = Utils.signIn;
 })
 
-.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, $ionicPopup, localStorageService, webapi, CordovaNetwork) {
+.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, Utils, localStorageService, WebApi, CordovaNetwork) {
 	// Set icon to the "still" one
-	$scope.refresh_icon = 'ion-refresh';
+	$scope.refresh_icon = Utils.refreshIcon;
 
 	$scope.toggleLeft = function() {
 		// Binding for menu opening
 		$ionicSideMenuDelegate.toggleLeft();
 	};
 
-	$scope.logout = function() {
-		// On logout, clear all saved data
-		localStorageService.clearAll();
-	};
+	$scope.logout = Utils.logout;
 
-	$scope.showAlert = function(testo) {
-		// Show error alert with custom text
-		$ionicPopup.alert({
-			title: 'Errore',
-			template: testo,
-			okType: 'button-assertive'
-		});
-	};
-
-	$scope.refresh = function() {
-		// Refresh handler
-		if (!CordovaNetwork.isOnline()) {
-			// If we are offline, show an alert.
-			$scope.showAlert('Sei offline. Connettiti e riprova.');
-		} else {
-			// On refresh button click, make icon spin
-			$scope.refresh_icon = 'ion-refreshing';
-
-			// Get user info from local storage
-			user = localStorageService.get('user');
-
-			// Make new request to update data
-			webapi.getData(user).then(function(result) {
-				// Stop icon spin
-				$scope.refresh_icon = 'ion-refresh';
-				
-				if (!result.success) {
-					// If the request failed, show an alert
-					$scope.showAlert('Errore di rete.');
-				} else {
-					// If the request succeded, save data in localstorage
-					localStorageService.set('data', result.data);
-					localStorageService.set('user', user);
-				}
-			});
-		}
-	};
+	$scope.updateData = Utils.updateData;
 })
 
 .controller('HomeCtrl', function($scope, localStorageService) {
