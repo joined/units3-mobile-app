@@ -93,16 +93,13 @@ angular.module('units3.services', ['base64'])
                 function(result) {
                     // Handle error
                     Utils.hideLoading();
-
-                    Utils.showAlert(angular.toJson(result));
-
-                    /*
+                    
                     if (result.status == 401) {
                         Utils.showAlert('Credenziali errate');
                     } else {
                         Utils.showAlert('Errore di rete');
                     }
-                    */
+                    
                 }
             );
         }
