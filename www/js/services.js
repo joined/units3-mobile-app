@@ -13,8 +13,8 @@ angular.module('units3.services', ['base64'])
             };
 
             return $http.get(
-                // 'http://api.units3.tk/?select=home,libretto,prenotazione_appelli,pagamenti',
-                'http://localhost:5000/?select=home,libretto,prenotazione_appelli,pagamenti',
+                'http://api.units3.tk/?select=home,libretto,prenotazione_appelli,pagamenti',
+                // 'http://localhost:5000/?select=home,libretto,prenotazione_appelli,pagamenti',
                 {timeout: 5000});
         }
     };
@@ -23,7 +23,13 @@ angular.module('units3.services', ['base64'])
 .service('Utils', function($state, $ionicPopup, $ionicLoading, CordovaNetwork, WebApi, localStorageService) {
     Utils = this;
 
-    this.refreshIcon = 'ion-refresh';
+    this.markClass = function(mark) {
+        if (isNaN(mark)) return 'nan';
+        else if (mark < 20) return 'less20';
+        else if (mark < 24) return 'less24';
+        else if (mark < 27) return 'less27';
+        else return 'more27';
+    }
 
     this.showAlert = function (text) {
         // Show alert
@@ -80,17 +86,33 @@ angular.module('units3.services', ['base64'])
                     // Handle success
                     Utils.hideLoading();
 
-                    Utils.showAlert(angular.toJson(result));
+                    Utils.saveData(user, result.data);
+
+                    $state.go('mainmenu.home');
                 }, 
                 function(result) {
                     // Handle error
                     Utils.hideLoading();
 
                     Utils.showAlert(angular.toJson(result));
+
+                    /*
+                    if (result.status == 401) {
+                        Utils.showAlert('Credenziali errate');
+                    } else {
+                        Utils.showAlert('Errore di rete');
+                    }
+                    */
                 }
             );
         }
     };
+})
+
+.service('Updater', function(Utils, CordovaNetwork, WebApi, localStorageService) {
+    this.refreshIcon = 'ion-refresh';
+
+    Updater = this;
 
     this.updateData = function() {
         // Refresh handler
@@ -99,7 +121,7 @@ angular.module('units3.services', ['base64'])
             Utils.showAlert('Sei offline. Connettiti e riprova.');
         } else {
             // On refresh button click, make icon spin
-            Utils.refreshIcon = 'ion-refreshing';
+            Updater.refreshIcon = 'ion-refreshing';
 
             // Get user info from local storage
             user = localStorageService.get('user');
@@ -108,13 +130,15 @@ angular.module('units3.services', ['base64'])
             WebApi.getData(user).then(
                 function(result) {
                     // Handle success
-                    Utils.refreshIcon = 'ion-refresh';
-                    Utils.showAlert(angular.toJson(result));
+                    Updater.refreshIcon = 'ion-refresh';
+                    
+                    Utils.saveData(user, result.data);
                 }, 
                 function(result) {
                     // Handle error
-                    Utils.refreshIcon = 'ion-refresh';
-                    Utils.showAlert(angular.toJson(result));
+                    Updater.refreshIcon = 'ion-refresh';
+
+                    Utils.showAlert('Errore di rete');
                 }
             );
         }

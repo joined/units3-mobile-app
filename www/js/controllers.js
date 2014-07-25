@@ -19,9 +19,8 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 	$scope.signIn = Utils.signIn;
 })
 
-.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, Utils, localStorageService, WebApi, CordovaNetwork) {
-	// Set icon to the "still" one
-	$scope.refresh_icon = Utils.refreshIcon;
+.controller('MainCtrl', function($scope, $ionicSideMenuDelegate, Utils, Updater) {
+	$scope.updater = Updater;
 
 	$scope.toggleLeft = function() {
 		// Binding for menu opening
@@ -34,8 +33,6 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 })
 
 .controller('HomeCtrl', function($scope, localStorageService) {
-	// This should update userinfo everytime localstorage changes
-	// but it doesn't seem to work
 	$scope.$watch(function() {
 		// value to watch for changes
 		return angular.toJson(localStorageService.get('data').home)
@@ -64,7 +61,9 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 		$scope.modal = modal;
 	});
 
-	$scope.openModal = function(esame) {
+	$scope.markClass = Utils.markClass;
+
+	$scope.showModal = function(esame) {
 		// We use modalData to pass info to modal
 		$scope.modalData = esame;
 		$scope.modal.show();

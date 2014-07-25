@@ -1,0 +1,46 @@
+/***** PRE-CONFIG *************************/
+// $dark: #aaa !default;
+/*****************************************/
+
+
+
+/****** IONIC FILES **********************/
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+/*****************************************/
+
+
+
+/***** POST-CONFIG *************************/
+div.staylogged {
+	font-size: 10pt;
+}
+
+ion-content {
+	background-color: #f5f5f5;
+}
+
+div.col {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+a { cursor: pointer; }
+
+div.voto {
+	font-size: 16pt;
+
+	&.voto-less20 { color: #BF770C; }
+	&.voto-less24 { color: #C99A03; }
+	&.voto-less27 { color: #8CC90A; }
+	&.voto-more27 { color: #1FBF0D; }
+}
+
+span.cfu {
+	font-size: 10pt;
+}
+
+/*****************************************/
