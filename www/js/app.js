@@ -30,52 +30,98 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 			controller: 'SignInCtrl'
 		})
 		// Abstract handler for side menus
-		.state('mainmenu', {
-			url: "/main",
+		.state('sections', {
+			url: "/sections",
 			abstract: true,
-			templateUrl: "templates/main-menu.html",
+			templateUrl: "templates/side-menu.html",
 			controller: 'MainCtrl'
 		})
 		// MainMenu->Home state
-		.state('mainmenu.home', {
+		.state('sections.home', {
 			url: "/home",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/home.html",
+					templateUrl: "templates/sections/home.html",
 					controller: "HomeCtrl"
 				}
 			}
 		})
 		// MainMenu->Libretto state
-		.state('mainmenu.libretto', {
+		.state('sections.libretto', {
 			url: "/libretto",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/libretto.html",
+					templateUrl: "templates/sections/libretto.html",
 					controller: "LibrettoCtrl"
 				}
 			}
 		})
 		// MainMenu->Appelli state
-		.state('mainmenu.appelli', {
+		.state('sections.appelli', {
 			url: "/appelli",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/appelli.html",
+					templateUrl: "templates/sections/appelli.html",
 					controller: "AppelliCtrl"
 				}
 			}
 		})
 		// MainMenu->Tasse state
-		.state('mainmenu.tasse', {
+		.state('sections.tasse', {
 			url: "/tasse",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/tasse.html",
+					templateUrl: "templates/sections/tasse.html",
 					controller: "TasseCtrl"
 				}
 			}
-		});
+		})
+		// MainMenu->Tabs state
+		.state('sections.tabs', {
+			url: "/tabs",
+			abstract: true,
+			views: {
+				'menuContent': {
+					templateUrl: "templates/sections/tabs.html",
+				}
+			}
+		})
+		// MainMenu->Tasse state
+		.state('sections.tabs.first', {
+			url: "/first",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/sections/tabs.html",
+				},
+				'tab-first': {
+					templateUrl: "templates/sections/tabs/first.html"
+				}
+			}
+		})
+		// MainMenu->Tasse state
+		.state('sections.tabs.second', {
+			url: "/second",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/sections/tabs.html",
+				},
+				'tab-second': {
+					templateUrl: "templates/sections/tabs/second.html"
+				}
+			}
+		})
+		// MainMenu->Tasse state
+		.state('sections.tabs.third', {
+			url: "/third",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/sections/tabs.html",
+				},
+				'tab-third': {
+					templateUrl: "templates/sections/tabs/third.html"
+				}
+			}
+		})
 
 	// Fallback to default state
 	$urlRouterProvider.otherwise("/");

@@ -88,7 +88,7 @@ angular.module('units3.services', ['base64'])
 
                     Utils.saveData(user, result.data);
 
-                    $state.go('mainmenu.home');
+                    $state.go('sections.home');
                 }, 
                 function(result) {
                     // Handle error
