@@ -1,11 +1,13 @@
 angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorageModule'])
 
-.controller('DefaultCtrl', function($state, Utils, localStorageService) {
+.controller('DefaultCtrl', function($state, Utils, localStorageService, Updater) {
 	// Controller of the default state opened when app is started for the
 	// first time, or when it's closed and opened again
 	if (Utils.loggedAndStay()) {
 		// If user is set, and he asked to stay logged in, go to home
-		$state.go('mainmenu.home');
+		$state.go(localStorageService.get('lastState'));
+
+		Updater.updateData();
 	} else {
 		// If user is not set, or if he asked not to stay logged in,
 		// clear storage and go to signin
@@ -32,7 +34,7 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 	$scope.updateData = Utils.updateData;
 })
 
-.controller('HomeCtrl', function($scope, localStorageService) {
+.controller('HomeCtrl', function($state, $scope, localStorageService) {
 	$scope.$watch(function() {
 		// value to watch for changes
 		return angular.toJson(localStorageService.get('data').home)
@@ -40,9 +42,11 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 		// change to make
 		$scope.userinfo = localStorageService.get('data').home;
 	});
+
+	localStorageService.set('lastState', $state.current.name);
 })
 
-.controller('LibrettoCtrl', function($scope, localStorageService, $ionicModal) {
+.controller('LibrettoCtrl', function($state, $scope, localStorageService, $ionicModal) {
 	// This should update esami everytime localstorage changes
 	// but it doesn't seem to work
 	$scope.$watch(function() {
@@ -78,9 +82,11 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 		//Cleanup the modal when we're done with it!
 		$scope.modal.remove();
 	});
+
+	localStorageService.set('lastState', $state.current.name);
 })
 
-.controller('AppelliCtrl', function($scope, localStorageService) {
+.controller('AppelliCtrl', function($state, $scope, localStorageService) {
 	// This should update local data everytime localstorage changes
 	// but it doesn't seem to work
 
@@ -91,9 +97,11 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 		// change to make
 		$scope.appelli = localStorageService.get('data').prenotazione_appelli;
 	});
+
+	localStorageService.set('lastState', $state.current.name);
 })
 
-.controller('TasseCtrl', function($scope, localStorageService) {
+.controller('TasseCtrl', function($state, $scope, localStorageService) {
 	// This should update local data everytime localstorage changes
 	// but it doesn't seem to work
 	$scope.$watch(function() {
@@ -103,4 +111,6 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 		// change to make
 		$scope.tasse = localStorageService.get('data').pagamenti;
 	});
+
+	localStorageService.set('lastState', $state.current.name);
 });
