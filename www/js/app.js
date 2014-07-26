@@ -86,7 +86,6 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 				}
 			}
 		})
-		// MainMenu->Tasse state
 		.state('sections.tabs.first', {
 			url: "/first",
 			views: {
@@ -98,7 +97,6 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 				}
 			}
 		})
-		// MainMenu->Tasse state
 		.state('sections.tabs.second', {
 			url: "/second",
 			views: {
@@ -110,7 +108,6 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 				}
 			}
 		})
-		// MainMenu->Tasse state
 		.state('sections.tabs.third', {
 			url: "/third",
 			views: {
@@ -122,7 +119,15 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 				}
 			}
 		})
-
+		// MainMenu->Settings state
+		.state('sections.settings', {
+			url: "/settings",
+			views: {
+				'menuContent': {
+					templateUrl: "templates/sections/settings.html",
+				}
+			}
+		})
 	// Fallback to default state
 	$urlRouterProvider.otherwise("/");
 });

@@ -15,41 +15,43 @@
   <ion-side-menu side="left">
     <ion-header-bar class="bar-assertive"></ion-header-bar>
     <ion-content>
-      <ul class="list">
-        <a ui-sref="sections.home" class="item item-icon-left" menu-close>
+      <ion-list>
+        <ion-item ui-sref="sections.home" class="item-icon-left" menu-close>
           <i class="icon ion-home"></i>
           Home
-        </a>
-        <div class="item item-divider">
+        </ion-item>
+        <ion-item class="item-divider">
           Didattica
-        </div>
-        <a ui-sref="sections.libretto" class="item item-icon-left" menu-close>
+        </ion-item>
+        <ion-item ui-sref="sections.libretto" class="item-icon-left" menu-close>
           <i class="icon ion-ios7-bookmarks"></i>
           Libretto
-        </a>
-        <a ui-sref="sections.appelli" class="item item-icon-left" menu-close>
+        </ion-item>
+        <ion-item ui-sref="sections.appelli" class="item-icon-left" menu-close>
           <i class="icon ion-calendar"></i>
           Appelli
-        </a>
-        <div class="item item-divider">
+        </ion-item>
+        <ion-item class="item-divider">
           Amministrazione
-        </div>
-        <a ui-sref="sections.tasse" class="item item-icon-left" menu-close>
+        </ion-item>
+        <ion-item ui-sref="sections.tasse" class="item-icon-left" menu-close>
           <i class="icon ion-cash"></i>
           Tasse
-        </a>
-        <a ui-sref="sections.tabs.first" class="item item-icon-left" menu-close>
-          <i class="icon ion-alert"></i>
+        </ion-item>
+        <ion-item ui-sref="sections.tabs.first" class="item-icon-left" menu-close>
+          <i class="icon ion-navicon"></i>
           Tabs
-        </a>
-        <div class="item item-divider">
-          &nbsp;
-        </div>
-        <a class="item item-icon-left" ng-click="logout()" menu-close>
+        </ion-item>
+        <ion-item class="item-divider"></ion-item>
+        <ion-item ui-sref="sections.settings" class="item-icon-left" menu-close>
+          <i class="icon ion-gear-a"></i>
+          Impostazioni
+        </ion-item>
+        <ion-item class="item-icon-left" ng-click="logout()" menu-close>
           <i class="icon ion-log-out"></i>
           Logout
-        </a>
-      </ul>
+        </ion-item>
+      </ion-list>
     </ion-content>
   </ion-side-menu>
 
