@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.units3955752"
-        version="0.0.1"
+        version="0.1"
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
         xmlns:gap="http://phonegap.com/ns/1.0">
@@ -20,4 +20,5 @@
   <gap:plugin name="org.apache.cordova.device" version="0.2.8" />
   <gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
   <gap:plugin name="com.ionic.keyboard" version="1.0.1" />
+  <gap:platform name="android" />
 </widget>
