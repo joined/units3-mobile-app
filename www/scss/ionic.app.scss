@@ -1,5 +1,5 @@
-/***** PRE-CONFIG *************************/
-// $dark: #aaa !default;
+/**** PRE-CONFIG *************************/
+
 /*****************************************/
 
 
@@ -30,20 +30,16 @@ div.col {
 
 a { cursor: pointer; }
 
-div.voto {
-	font-size: 16pt;
-
-	&.voto-less20 { color: #BF770C; }
-	&.voto-less24 { color: #C99A03; }
-	&.voto-less27 { color: #8CC90A; }
-	&.voto-more27 { color: #1FBF0D; }
+div.col-data-esame {
+	text-align: center;
+	font-weight: normal;
+	font-size: 11pt;
 }
 
-span.cfu {
+div.col-crediti {
+	font-weight: normal;
 	font-size: 10pt;
 }
 
-a.tab-item-active {
-	border-bottom: 1px solid white;
-}
-/*****************************************/
+div.row-esame { padding: 0; }
+/******************************************/

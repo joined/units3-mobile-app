@@ -1,50 +1,50 @@
 <div class="modal">
-<ion-header-bar>
-  <h1 class="title">Dettaglio esame</h1>
-  <button class="button button-clear button-primary" ng-click="closeModal()">Chiudi</button>
-</ion-header-bar>
-<ion-content>
-  <div class="padding">
-	<div class="row">
-		<div class="col">
-			<strong>Nome</strong>
+	<ion-header-bar>
+		<h1 class="title">Dettaglio esame</h1>
+		<button class="button button-clear button-primary" ng-click="closeModal()">Chiudi</button>
+	</ion-header-bar>
+	<ion-content>
+		<div class="padding">
+			<div class="row">
+				<div class="col">
+					<strong>Nome</strong>
+				</div>
+				<div class="col">
+					{{modalData.nome}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<strong>Codice</strong>
+				</div>
+				<div class="col">
+					{{modalData.codice}}
+				</div>
+			</div>
+			<div ng-hide="!modalData.superato" class="row">
+				<div class="col">
+					<strong>Data</strong>
+				</div>
+				<div class="col">
+					{{modalData.data}}
+				</div>
+			</div>
+			<div ng-hide="!modalData.superato" class="row">
+				<div class="col">
+					<strong>Voto</strong>
+				</div>
+				<div class="col">
+					{{modalData.voto}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<strong>Anno di frequenza</strong>
+				</div>
+				<div class="col">
+					{{modalData.anno_frequenza}}
+				</div>
+			</div>
 		</div>
-		<div class="col">
-			{{modalData.nome}}
-		</div>
-	</div>
-	<div class="row">
-		<div class="col">
-			<strong>Codice</strong>
-		</div>
-		<div class="col">
-			{{modalData.codice}}
-		</div>
-	</div>
-	<div ng-hide="!modalData.superato" class="row">
-		<div class="col">
-			<strong>Data</strong>
-		</div>
-		<div class="col">
-			{{modalData.data}}
-		</div>
-	</div>
-	<div ng-hide="!modalData.superato" class="row">
-		<div class="col">
-			<strong>Voto</strong>
-		</div>
-		<div class="col">
-			{{modalData.voto}}
-		</div>
-	</div>
-	<div class="row">
-		<div class="col">
-			<strong>Anno di frequenza</strong>
-		</div>
-		<div class="col">
-			{{modalData.anno_frequenza}}
-		</div>
-	</div>
-  </div>
-</ion-content>
+	</ion-content>
 </div>

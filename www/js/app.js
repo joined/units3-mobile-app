@@ -82,7 +82,7 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 			abstract: true,
 			views: {
 				'menuContent': {
-					templateUrl: "templates/sections/tabs.html",
+					templateUrl: "templates/sections/tabs.html"
 				}
 			}
 		})
@@ -90,10 +90,11 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 			url: "/first",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/sections/tabs.html",
+					templateUrl: "templates/sections/tabs.html"
 				},
 				'tab-first': {
-					templateUrl: "templates/sections/tabs/first.html"
+					templateUrl: "templates/sections/tabs/first.html",
+					controller: "FirstTabCtrl"
 				}
 			}
 		})

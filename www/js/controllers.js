@@ -46,19 +46,11 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 	localStorageService.set('lastState', $state.current.name);
 })
 
-.controller('LibrettoCtrl', function($state, $scope, localStorageService, $ionicModal) {
-	// This should update esami everytime localstorage changes
-	// but it doesn't seem to work
-	$scope.$watch(function() {
-		// value to watch for changes
-		return angular.toJson(localStorageService.get('data').libretto)
-	}, function () {
-		// change to make
-		$scope.esami = localStorageService.get('data').libretto;
-	});
+.controller('LibrettoCtrl', function($state, $scope, localStorageService, $ionicModal, Esami) {
+	$scope.esami = Esami;
 
 	// Modal showing exam details
-	$ionicModal.fromTemplateUrl('templates/modal-esame.html', {
+	$ionicModal.fromTemplateUrl('templates/sections/modal-esame.html', {
 		scope: $scope,
 		animation: 'slide-in-up'
 	}).then(function(modal) {
@@ -75,7 +67,7 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 
 	$scope.closeModal = function() {
 		// Modal hiding
-	 	$scope.modal.hide();
+		$scope.modal.hide();
 	};
 
 	$scope.$on('$destroy', function() {
@@ -113,4 +105,8 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 	});
 
 	localStorageService.set('lastState', $state.current.name);
+})
+
+.controller('FirstTabCtrl', function($scope) {
+
 });
