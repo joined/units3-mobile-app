@@ -1,5 +1,5 @@
 <ion-view title="Libretto">
-<ion-content padding="true">
+<ion-content has-header="true">
 	<div class="card" ng-click="showModal(esame)" ng-repeat="esame in esami.examData">
 		<a class="item item-text-wrap">
 			{{esame.nome}}
@@ -10,7 +10,7 @@
 					<span style="color:{{esami.getColor(esame.voto)}}">{{esame.voto}}</span>
 				</div>
 				<div class="col col-data-esame">
-					<i class="icon ion-calendar"></i> {{esami.getDate(esame.data)}}
+					<i class="icon ion-calendar"></i> {{getDate(esame.data)}}
 				</div>
 				<div class="col col-20 col-crediti">
 					{{esame.crediti}} CFU

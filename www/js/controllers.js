@@ -34,7 +34,8 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 	$scope.updateData = Utils.updateData;
 })
 
-.controller('HomeCtrl', function($state, $scope, localStorageService) {
+.controller('HomeCtrl', function($state, $scope, localStorageService, Utils) {
+	$scope.getDate = Utils.getDate;
 	$scope.$watch(function() {
 		// value to watch for changes
 		return angular.toJson(localStorageService.get('data').home)
@@ -48,6 +49,7 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 
 .controller('LibrettoCtrl', function($state, $scope, localStorageService, $ionicModal, Esami) {
 	$scope.esami = Esami;
+	$scope.getDate = Utils.getDate;
 
 	// Modal showing exam details
 	$ionicModal.fromTemplateUrl('templates/sections/modal-esame.html', {
@@ -93,7 +95,8 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 	localStorageService.set('lastState', $state.current.name);
 })
 
-.controller('TasseCtrl', function($state, $scope, localStorageService) {
+.controller('TasseCtrl', function($state, $scope, localStorageService, Utils) {
+	$scope.getDate = Utils.getDate;
 	// This should update local data everytime localstorage changes
 	// but it doesn't seem to work
 	$scope.$watch(function() {
@@ -108,5 +111,7 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 })
 
 .controller('FirstTabCtrl', function($scope) {
+})
 
+.controller('SettingsCtrl', function($scope, $rootScope) {
 });

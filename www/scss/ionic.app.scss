@@ -1,4 +1,4 @@
-/**** PRE-CONFIG *************************/
+/*** PRE-CONFIG *************************/
 
 /*****************************************/
 
@@ -42,4 +42,14 @@ div.col-crediti {
 }
 
 div.row-esame { padding: 0; }
-/******************************************/
+
+div.card-tassa {
+	div.row {
+		padding: 0;
+	}
+	span.datascadenza {
+		float: right;
+		font-weight: normal;
+	}
+}
+/*******************************************/

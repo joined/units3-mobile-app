@@ -126,6 +126,7 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 			views: {
 				'menuContent': {
 					templateUrl: "templates/sections/settings.html",
+					controller: "SettingsCtrl"
 				}
 			}
 		})

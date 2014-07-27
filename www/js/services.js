@@ -23,6 +23,12 @@ angular.module('units3.services', ['base64'])
 .service('Utils', function($state, $ionicPopup, $ionicLoading, CordovaNetwork, WebApi, localStorageService) {
 	Utils = this;
 
+	this.getDate = function(datestring) {
+		d = new Date(datestring);
+		return d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
+	}
+
+
 	this.showAlert = function (text) {
 		// Show alert
 		$ionicPopup.alert({
@@ -127,7 +133,7 @@ angular.module('units3.services', ['base64'])
 					// Handle error
 					Updater.refreshIcon = 'ion-refresh';
 
-					Utils.showAlert('Errore di rete');
+					// Utils.showAlert('Errore di rete');
 				}
 			);
 		}
@@ -138,11 +144,6 @@ angular.module('units3.services', ['base64'])
 	Esami = this;
 
 	this.examData = localStorageService.get('data').libretto;
-
-	this.getDate = function(datestring) {
-		d = new Date(datestring);
-		return d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
-	}
 
 	this.getColor = function(voto) {
 		if (isNaN(voto)) return 'black';
