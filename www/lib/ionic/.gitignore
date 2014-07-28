@@ -13,6 +13,7 @@ css/*
 
 # don't ignore fonts folder
 !fonts/
+!fonts/*
 
 # dont' ignore js folder
 !js/
