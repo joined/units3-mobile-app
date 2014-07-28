@@ -1,5 +1,22 @@
+# ignore everything
 *
+
+# except gitignore
 !.gitignore
+
+# don't ignore css folder
+!css/
+# but ignore everything in it
+css/*
+# except ionic.min.css
 !css/ionic.min.css
+
+# don't ignore fonts folder
+!fonts/
+
+# dont' ignore js folder
+!js/
+# but ignore everything in it
+js/*
+# except ionic.bundle.min
 !js/ionic.bundle.min.js
-!fonts/*

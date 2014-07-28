@@ -1,0 +1,8 @@
+# ignore everything
+*
+
+# except gitignore
+!.gitignore
+
+# except ionic.app.min.css
+!ionic.app.min.css
