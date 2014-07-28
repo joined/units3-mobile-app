@@ -1,0 +1,5 @@
+*
+!.gitignore
+!css/ionic.min.css
+!js/ionic.bundle.min.js
+!fonts/*
