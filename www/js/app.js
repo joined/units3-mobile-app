@@ -105,7 +105,8 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 					templateUrl: "templates/sections/tabs.html",
 				},
 				'tab-second': {
-					templateUrl: "templates/sections/tabs/second.html"
+					templateUrl: "templates/sections/tabs/second.html",
+					controller: "SecondTabCtrl"
 				}
 			}
 		})

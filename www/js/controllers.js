@@ -110,7 +110,20 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 	localStorageService.set('lastState', $state.current.name);
 })
 
-.controller('FirstTabCtrl', function($scope) {
+.controller('FirstTabCtrl', function($scope, $state) {
+	$scope.onSwipeLeft = function() {
+		console.log("onSwipeLeft");
+
+		$state.go('sections.tabs.second')
+	};
+})
+
+.controller('SecondTabCtrl', function($scope, $state) {
+	$scope.onSwipeRight = function() {
+		console.log("onSwipeRight");
+
+		$state.go('sections.tabs.first')
+	};
 })
 
 .controller('SettingsCtrl', function($scope, $rootScope) {
