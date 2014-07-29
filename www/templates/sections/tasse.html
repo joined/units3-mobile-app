@@ -2,7 +2,15 @@
 	<ion-content padding="true">
 		<div class="card card-tassa" ng-repeat="tassa in tasse | orderBy : 'codice_fattura' : true">
 			<div class="item item-divider">
-				Codice fattura: {{tassa.codice_fattura}}
+				<div class="row">
+					<div class="col">
+						Codice fattura: {{tassa.codice_fattura}}	
+					</div>
+					<div ng-show="!tassa.pagata" class="col col-10 col-tassa-da-pagare">
+						<i class="icon ion-alert assertive"></i>
+					</div>
+				</div>
+
 			</div>
 			<div class="item item-text-wrap">
 				{{tassa.descrizione}}
@@ -10,12 +18,10 @@
 			<div class="item item-divider">
 				<div class="row">
 					<div class="col">
-						{{tassa.importo.toFixed(2).replace('.',',')}} €
+						{{tassa.importo}} €
 					</div>
-					<div class="col">
-						<span class="datascadenza">
-							{{getDate(tassa.data_scadenza)}}
-						</span>
+					<div class="col col-data-scadenza">
+						Scad. {{getDate(tassa.data_scadenza)}}
 					</div>
 				</div>
 			</div>

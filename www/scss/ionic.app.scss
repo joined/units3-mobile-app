@@ -47,8 +47,8 @@ div.card-tassa {
 	div.row {
 		padding: 0;
 	}
-	span.datascadenza {
-		float: right;
+	div.col-data-scadenza, div.col-tassa-da-pagare {
+		text-align: right;
 		font-weight: normal;
 	}
 }
