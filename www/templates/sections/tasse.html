@@ -6,8 +6,8 @@
 					<div class="col">
 						Codice fattura: {{tassa.codice_fattura}}	
 					</div>
-					<div ng-show="!tassa.pagata" class="col col-10 col-tassa-da-pagare">
-						<i class="icon ion-alert assertive"></i>
+					<div class="col col-10 col-pagamento-tassa">
+						<i class="icon" ng-class="!tassa.pagata ? 'assertive ion-alert' : 'balanced ion-checkmark'"></i>
 					</div>
 				</div>
 
@@ -17,7 +17,7 @@
 			</div>
 			<div class="item item-divider">
 				<div class="row">
-					<div class="col">
+					<div class="col col-25">
 						{{tassa.importo}} €
 					</div>
 					<div class="col col-data-scadenza">

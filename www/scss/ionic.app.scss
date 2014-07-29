@@ -47,9 +47,13 @@ div.card-tassa {
 	div.row {
 		padding: 0;
 	}
-	div.col-data-scadenza, div.col-tassa-da-pagare {
+	div.col-data-scadenza, div.col-pagamento-tassa {
 		text-align: right;
 		font-weight: normal;
 	}
+}
+
+.home-list {
+	ion-item { padding: 5px; }
 }
 /*******************************************/

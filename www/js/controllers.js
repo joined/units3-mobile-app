@@ -110,20 +110,30 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 	localStorageService.set('lastState', $state.current.name);
 })
 
-.controller('FirstTabCtrl', function($scope, $state) {
-	$scope.onSwipeLeft = function() {
-		console.log("onSwipeLeft");
+.controller('TabsCtrl', function($scope, $state, $ionicTabsDelegate) {
+	$scope.animation = 'slide-left-right';
 
-		$state.go('sections.tabs.second')
-	};
-})
+	$scope.goToTab = function(tabname) {
+		console.log(tabname);
+		cur_tab = $ionicTabsDelegate.selectedIndex();
+		console.log(cur_tab);
+		var cur_tab_name;
+		switch (cur_tab) {
+			case 0: cur_tab_name = 'first'; break;
+			case 1: cur_tab_name = 'second'; break;
+			case 2: cur_tab_name = 'third'; break;
+		}
 
-.controller('SecondTabCtrl', function($scope, $state) {
-	$scope.onSwipeRight = function() {
-		console.log("onSwipeRight");
+		if (cur_tab_name < tabname) {
+			$scope.animation = 'slide-left-right';
+		} else {
+			$scope.animation = 'slide-right-left';
+		}
 
-		$state.go('sections.tabs.first')
-	};
+		console.log($scope.animation);
+
+    	$state.go('sections.tabs.' + tabname)
+  	}
 })
 
 .controller('SettingsCtrl', function($scope, $rootScope) {

@@ -1,12 +1,12 @@
 <ion-view title="Tabs">
-	<ion-tabs class="tabs-top tabs-dark">
-		<ion-tab title="FirstTab" ui-sref="sections.tabs.first">
+	<ion-tabs class="tabs-top tabs-dark" ng-class="animation">
+		<ion-tab title="FirstTab" ng-click="goToTab('first')">
 			<ion-nav-view name="tab-first"></ion-nav-view>
 		</ion-tab>
-		<ion-tab title="SecondTab" ui-sref="sections.tabs.second">
+		<ion-tab title="SecondTab" ng-click="goToTab('second')">
 			<ion-nav-view name="tab-second"></ion-nav-view>
 		</ion-tab>
-		<ion-tab title="ThirdTab" ui-sref="sections.tabs.third">
+		<ion-tab title="ThirdTab" ng-click="goToTab('third')">
 			<ion-nav-view name="tab-third"></ion-nav-view>
 		</ion-tab>
 	</ion-tabs>

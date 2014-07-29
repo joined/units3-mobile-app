@@ -82,7 +82,8 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 			abstract: true,
 			views: {
 				'menuContent': {
-					templateUrl: "templates/sections/tabs.html"
+					templateUrl: "templates/sections/tabs.html",
+					controller: "TabsCtrl"
 				}
 			}
 		})
@@ -93,8 +94,7 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 					templateUrl: "templates/sections/tabs.html"
 				},
 				'tab-first': {
-					templateUrl: "templates/sections/tabs/first.html",
-					controller: "FirstTabCtrl"
+					templateUrl: "templates/sections/tabs/first.html"
 				}
 			}
 		})
@@ -102,11 +102,10 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 			url: "/second",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/sections/tabs.html",
+					templateUrl: "templates/sections/tabs.html"
 				},
 				'tab-second': {
-					templateUrl: "templates/sections/tabs/second.html",
-					controller: "SecondTabCtrl"
+					templateUrl: "templates/sections/tabs/second.html"
 				}
 			}
 		})
@@ -114,7 +113,7 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 			url: "/third",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/sections/tabs.html",
+					templateUrl: "templates/sections/tabs.html"
 				},
 				'tab-third': {
 					templateUrl: "templates/sections/tabs/third.html"
