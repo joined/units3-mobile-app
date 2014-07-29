@@ -1,0 +1,36 @@
+<ion-content padding="true">
+	<div class="card card-appello" ng-repeat="appello in appelli">
+
+		<div class="item item-divider">
+			<div class="row">
+				<div class="col">
+					{{appello.nome_corso}}
+				</div>
+				<div class="col col-25 col-align-right">
+					<span ng-show="appello.iscrizioni_aperte">
+						Aperto <i class="icon ion-checkmark balanced"></i>
+					</span>
+					<span ng-hide="appello.iscrizioni_aperte">
+						Chiuso <i class="icon ion-close assertive"></i>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="item item-text-wrap">
+			<div class="row">
+				<div class="col">
+					{{appello.descrizione}}
+				</div>
+				<div class="col col-30 col-align-right">
+					{{formatDate(appello.data_esame)}}
+				</div>
+			</div>
+		</div>
+
+		<div class="item item-divider normal-weight">
+			<strong>Iscrizioni:</strong> {{formatDate(appello.periodo_iscrizione.inizio)}} - {{formatDate(appello.periodo_iscrizione.fine)}}
+		</div>
+		
+	</div>
+</ion-content>

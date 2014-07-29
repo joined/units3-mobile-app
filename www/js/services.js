@@ -13,9 +13,9 @@ angular.module('units3.services', ['base64'])
 			};
 
 			return $http.get(
-				'http://api.units3.tk/?select=home,libretto,prenotazione_appelli,pagamenti',
+				'http://api.units3.tk/?select=home,libretto,prenotazione_appelli,pagamenti,prenotazioni_effettuate',
 				// 'http://localhost:5000/?select=home,libretto,prenotazione_appelli,pagamenti',
-				{timeout: 5000});
+				{timeout: 8000});
 		}
 	};
 })
@@ -23,7 +23,7 @@ angular.module('units3.services', ['base64'])
 .service('Utils', function($state, $ionicPopup, $ionicLoading, CordovaNetwork, WebApi, localStorageService) {
 	Utils = this;
 
-	this.getDate = function(datestring) {
+	this.formatDate = function(datestring) {
 		d = new Date(datestring);
 		return d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
 	}
@@ -133,18 +133,14 @@ angular.module('units3.services', ['base64'])
 				function(result) {
 					// Handle error
 					Updater.refreshIcon = 'ion-alert-circled';
-
-					// Utils.showAlert('Errore di rete');
 				}
 			);
 		}
 	};
 })
 
-.service('Esami', function(localStorageService) {
+.service('ExamColor', function(localStorageService) {
 	Esami = this;
-
-	this.examData = localStorageService.get('data').libretto;
 
 	this.getColor = function(voto) {
 		if (isNaN(voto)) return 'black';

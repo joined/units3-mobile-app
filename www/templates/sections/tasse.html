@@ -1,30 +1,33 @@
 <ion-view title="Tasse">
 	<ion-content padding="true">
 		<div class="card card-tassa" ng-repeat="tassa in tasse | orderBy : 'codice_fattura' : true">
+
 			<div class="item item-divider">
 				<div class="row">
 					<div class="col">
 						Codice fattura: {{tassa.codice_fattura}}	
 					</div>
 					<div class="col col-10 col-align-right">
-						<i class="icon" ng-class="!tassa.pagata ? 'assertive ion-alert' : 'balanced ion-checkmark'"></i>
+						<i class="icon" ng-class="tassa.pagata ? 'balanced ion-checkmark' : 'assertive ion-alert'"></i>
 					</div>
 				</div>
-
 			</div>
+
 			<div class="item item-text-wrap">
 				{{tassa.descrizione}}
 			</div>
+
 			<div class="item item-divider">
 				<div class="row">
 					<div class="col col-25">
 						{{tassa.importo}} €
 					</div>
 					<div class="col col-align-right normal-weight">
-						Scad. {{getDate(tassa.data_scadenza)}}
+						Scad. {{formatDate(tassa.data_scadenza)}}
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</ion-content>
 </ion-view>

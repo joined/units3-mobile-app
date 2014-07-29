@@ -1,34 +1,13 @@
 <ion-view title="Appelli">
-	<ion-content padding="true">
-		<div class="card card-appello" ng-repeat="appello in appelli">
-			<div class="item item-divider">
-				<div class="row">
-					<div class="col">
-						{{appello.nome_corso}}
-					</div>
-					<div class="col col-25 col-align-right">
-						<span ng-show="appello.iscrizioni_aperte">
-							Aperto <i class="icon ion-checkmark balanced"></i>
-						</span>
-						<span ng-hide="appello.iscrizioni_aperte">
-							Chiuso <i class="icon ion-close assertive"></i>
-						</span>
-					</div>
-				</div>
-			</div>
-			<div class="item item-text-wrap">
-				<div class="row">
-					<div class="col">
-						{{appello.descrizione}}
-					</div>
-					<div class="col col-30 col-align-right">
-						{{appello.data_esame}}
-					</div>
-				</div>
-			</div>
-			<div class="item item-divider normal-weight">
-				<strong>Iscrizioni:</strong> {{convDate(appello.periodo_iscrizione.inizio)}} - {{convDate(appello.periodo_iscrizione.fine)}}
-			</div>
-		</div>
-	</ion-content>
+	<ion-tabs class="tabs-top tabs-dark">
+
+		<ion-tab title="Disponibili" ui-sref="sections.appelli.disponibili">
+			<ion-nav-view name="tab-disponibili"></ion-nav-view>
+		</ion-tab>
+
+		<ion-tab title="Prenotati" ui-sref="sections.appelli.prenotati">
+			<ion-nav-view name="tab-prenotati"></ion-nav-view>
+		</ion-tab>
+		
+	</ion-tabs>
 </ion-view>

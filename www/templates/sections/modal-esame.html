@@ -21,7 +21,7 @@
 					{{modalData.codice}}
 				</div>
 			</div>
-			<div ng-hide="!modalData.superato" class="row">
+			<div ng-show="modalData.superato" class="row">
 				<div class="col">
 					<strong>Data</strong>
 				</div>
@@ -29,7 +29,7 @@
 					{{modalData.data}}
 				</div>
 			</div>
-			<div ng-hide="!modalData.superato" class="row">
+			<div ng-show="modalData.superato" class="row">
 				<div class="col">
 					<strong>Voto</strong>
 				</div>

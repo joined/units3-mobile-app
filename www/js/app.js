@@ -56,16 +56,6 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 				}
 			}
 		})
-		// MainMenu->Appelli state
-		.state('sections.appelli', {
-			url: "/appelli",
-			views: {
-				'menuContent': {
-					templateUrl: "templates/sections/appelli.html",
-					controller: "AppelliCtrl"
-				}
-			}
-		})
 		// MainMenu->Tasse state
 		.state('sections.tasse', {
 			url: "/tasse",
@@ -76,47 +66,37 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 				}
 			}
 		})
-		// MainMenu->Tabs state
-		.state('sections.tabs', {
-			url: "/tabs",
+		// MainMenu->Appelli state
+		.state('sections.appelli', {
+			url: "/appelli",
 			abstract: true,
 			views: {
 				'menuContent': {
-					templateUrl: "templates/sections/tabs.html",
-					controller: "TabsCtrl"
+					templateUrl: "templates/sections/appelli.html",
 				}
 			}
 		})
-		.state('sections.tabs.first', {
-			url: "/first",
+		.state('sections.appelli.disponibili', {
+			url: "/disponibili",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/sections/tabs.html"
+					templateUrl: "templates/sections/appelli.html"
 				},
-				'tab-first': {
-					templateUrl: "templates/sections/tabs/first.html"
+				'tab-disponibili': {
+					templateUrl: "templates/sections/appelli/disponibili.html",
+					controller: "AppDispCtrl"
 				}
 			}
 		})
-		.state('sections.tabs.second', {
-			url: "/second",
+		.state('sections.appelli.prenotati', {
+			url: "/prenotati",
 			views: {
 				'menuContent': {
-					templateUrl: "templates/sections/tabs.html"
+					templateUrl: "templates/sections/appelli.html"
 				},
-				'tab-second': {
-					templateUrl: "templates/sections/tabs/second.html"
-				}
-			}
-		})
-		.state('sections.tabs.third', {
-			url: "/third",
-			views: {
-				'menuContent': {
-					templateUrl: "templates/sections/tabs.html"
-				},
-				'tab-third': {
-					templateUrl: "templates/sections/tabs/third.html"
+				'tab-prenotati': {
+					templateUrl: "templates/sections/appelli/prenotati.html",
+					controller: "AppPrenCtrl"
 				}
 			}
 		})

@@ -35,7 +35,8 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 })
 
 .controller('HomeCtrl', function($state, $scope, localStorageService, Utils) {
-	$scope.getDate = Utils.getDate;
+	$scope.formatDate = Utils.formatDate;
+
 	$scope.$watch(function() {
 		// value to watch for changes
 		return angular.toJson(localStorageService.get('data').home)
@@ -47,9 +48,18 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 	localStorageService.set('lastState', $state.current.name);
 })
 
-.controller('LibrettoCtrl', function($state, $scope, localStorageService, $ionicModal, Esami) {
-	$scope.esami = Esami;
-	$scope.getDate = Utils.getDate;
+.controller('LibrettoCtrl', function($state, $scope, localStorageService, $ionicModal, ExamColor) {
+	$scope.$watch(function() {
+		// value to watch for changes
+		return angular.toJson(localStorageService.get('data').libretto)
+	}, function () {
+		// change to make
+		$scope.esami = localStorageService.get('data').libretto;
+	});
+
+	$scope.getColor = ExamColor.getColor;
+
+	$scope.formatDate = Utils.formatDate;
 
 	// Modal showing exam details
 	$ionicModal.fromTemplateUrl('templates/sections/modal-esame.html', {
@@ -80,8 +90,8 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 	localStorageService.set('lastState', $state.current.name);
 })
 
-.controller('AppelliCtrl', function($state, $scope, localStorageService) {
-	$scope.convDate = Utils.getDate;
+.controller('AppDispCtrl', function($state, $scope, localStorageService) {
+	$scope.formatDate = Utils.formatDate;
 	// This should update local data everytime localstorage changes
 	// but it doesn't seem to work
 
@@ -96,8 +106,24 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 	localStorageService.set('lastState', $state.current.name);
 })
 
+.controller('AppPrenCtrl', function($state, $scope, localStorageService) {
+	$scope.formatDate = Utils.formatDate;
+	// This should update local data everytime localstorage changes
+	// but it doesn't seem to work
+
+	$scope.$watch(function() {
+		// value to watch for changes
+		return angular.toJson(localStorageService.get('data').prenotazioni_effettuate)
+	}, function () {
+		// change to make
+		$scope.appelli = localStorageService.get('data').prenotazioni_effettuate;
+	});
+
+	localStorageService.set('lastState', $state.current.name);
+})
+
 .controller('TasseCtrl', function($state, $scope, localStorageService, Utils) {
-	$scope.getDate = Utils.getDate;
+	$scope.formatDate = Utils.formatDate;
 	// This should update local data everytime localstorage changes
 	// but it doesn't seem to work
 	$scope.$watch(function() {
