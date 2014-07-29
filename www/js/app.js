@@ -73,6 +73,7 @@ angular.module('units3', ['ionic', 'units3.controllers'])
 			views: {
 				'menuContent': {
 					templateUrl: "templates/sections/appelli.html",
+					controller: "AppelliCtrl"
 				}
 			}
 		})
