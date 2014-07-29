@@ -17,7 +17,14 @@
 				</div>
 			</div>
 			<div class="item item-text-wrap">
-				{{appello.descrizione}}
+				<div class="row">
+					<div class="col">
+						{{appello.descrizione}}
+					</div>
+					<div class="col col-30 col-align-right">
+						{{appello.data_esame}}
+					</div>
+				</div>
 			</div>
 			<div class="item item-divider normal-weight">
 				<strong>Iscrizioni:</strong> {{convDate(appello.periodo_iscrizione.inizio)}} - {{convDate(appello.periodo_iscrizione.fine)}}
