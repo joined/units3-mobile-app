@@ -111,12 +111,9 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 })
 
 .controller('TabsCtrl', function($scope, $state, $ionicTabsDelegate) {
-	$scope.animation = 'slide-left-right';
-
 	$scope.goToTab = function(tabname) {
-		console.log(tabname);
 		cur_tab = $ionicTabsDelegate.selectedIndex();
-		console.log(cur_tab);
+
 		var cur_tab_name;
 		switch (cur_tab) {
 			case 0: cur_tab_name = 'first'; break;
@@ -129,8 +126,6 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 		} else {
 			$scope.animation = 'slide-right-left';
 		}
-
-		console.log($scope.animation);
 
     	$state.go('sections.tabs.' + tabname)
   	}

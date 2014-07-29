@@ -1,5 +1,5 @@
 <ion-view title="Tabs">
-	<ion-tabs class="tabs-top tabs-dark" ng-class="animation">
+	<ion-tabs class="tabs-top tabs-dark" ng-class="animation ? animation : 'slide-left-right'">
 		<ion-tab title="FirstTab" ng-click="goToTab('first')">
 			<ion-nav-view name="tab-first"></ion-nav-view>
 		</ion-tab>
