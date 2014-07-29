@@ -1,5 +1,27 @@
 <ion-view title="Appelli">
 	<ion-content padding="true">
-		<p><pre>{{appelli | json}}</pre></p>
+		<div class="card card-appello" ng-repeat="appello in appelli">
+			<div class="item item-divider">
+				<div class="row">
+					<div class="col">
+						{{appello.nome_corso}}
+					</div>
+					<div class="col col-25 col-align-right">
+						<span ng-show="appello.iscrizioni_aperte">
+							Aperto <i class="icon ion-checkmark balanced"></i>
+						</span>
+						<span ng-hide="appello.iscrizioni_aperte">
+							Chiuso <i class="icon ion-close assertive"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="item item-text-wrap">
+				{{appello.descrizione}}
+			</div>
+			<div class="item item-divider normal-weight">
+				<strong>Iscrizioni:</strong> {{convDate(appello.periodo_iscrizione.inizio)}} - {{convDate(appello.periodo_iscrizione.fine)}}
+			</div>
+		</div>
 	</ion-content>
 </ion-view>

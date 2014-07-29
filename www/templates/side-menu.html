@@ -1,13 +1,13 @@
 <ion-side-menus>
 
-	<ion-side-menu-content edge-drag-threshold="true">
+	<ion-side-menu-content edge-drag-threshold="30">
 		<ion-nav-bar animation="no-animation" class="bar bar-header bar-dark">
 		</ion-nav-bar>
 		<ion-nav-buttons side="left">
 			<button class="button button-icon button-clear ion-navicon" ng-click="toggleLeft()"></button>
 		</ion-nav-buttons>
 		<ion-nav-buttons side="right">
-			<button class="button button-icon button-clear {{updater.refreshIcon}}" ng-click="updater.updateData()"></button>
+			<button ng-hide="updater.hideIcon" class="button button-icon button-clear {{updater.refreshIcon}}" ng-click="updater.updateData()"></button>
 		</ion-nav-buttons>
 		<ion-nav-view animation="no-animation" name="menuContent"></ion-nav-view>
 	</ion-side-menu-content> 

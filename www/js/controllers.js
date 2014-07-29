@@ -81,6 +81,7 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 })
 
 .controller('AppelliCtrl', function($state, $scope, localStorageService) {
+	$scope.convDate = Utils.getDate;
 	// This should update local data everytime localstorage changes
 	// but it doesn't seem to work
 
@@ -111,25 +112,33 @@ angular.module('units3.controllers', ['units3.services', 'base64', 'LocalStorage
 })
 
 .controller('TabsCtrl', function($scope, $state, $ionicTabsDelegate) {
-	$scope.goToTab = function(tabname) {
-		cur_tab = $ionicTabsDelegate.selectedIndex();
+	$scope.goToTab = function(index_to_go) {
+		// Get current tab index number
+		cur_tab_index = $ionicTabsDelegate.selectedIndex();
 
-		var cur_tab_name;
-		switch (cur_tab) {
-			case 0: cur_tab_name = 'first'; break;
-			case 1: cur_tab_name = 'second'; break;
-			case 2: cur_tab_name = 'third'; break;
-		}
-
-		if (cur_tab_name < tabname) {
+		if (cur_tab_index < index_to_go) {
 			$scope.animation = 'slide-left-right';
 		} else {
 			$scope.animation = 'slide-right-left';
 		}
 
-    	$state.go('sections.tabs.' + tabname)
+		// Get tab to go name from index
+		var tab_to_go;
+		switch (index_to_go) {
+			case 0: tab_to_go = 'first'; break;
+			case 1: tab_to_go = 'second'; break;
+			case 2: tab_to_go = 'third'; break;
+		}
+
+    	$state.go('sections.tabs.' + tab_to_go)
   	}
 })
 
-.controller('SettingsCtrl', function($scope, $rootScope) {
+.controller('SettingsCtrl', function($scope, $rootScope, Updater) {
+	Updater.hideIcon = true;
+
+	$scope.$on('$destroy', function() {
+		//Cleanup the modal when we're done with it!
+		Updater.hideIcon = false;
+	});
 });

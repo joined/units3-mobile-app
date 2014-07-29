@@ -6,7 +6,7 @@
 					<div class="col">
 						Codice fattura: {{tassa.codice_fattura}}	
 					</div>
-					<div class="col col-10 col-pagamento-tassa">
+					<div class="col col-10 col-align-right">
 						<i class="icon" ng-class="!tassa.pagata ? 'assertive ion-alert' : 'balanced ion-checkmark'"></i>
 					</div>
 				</div>
@@ -20,7 +20,7 @@
 					<div class="col col-25">
 						{{tassa.importo}} €
 					</div>
-					<div class="col col-data-scadenza">
+					<div class="col col-align-right normal-weight">
 						Scad. {{getDate(tassa.data_scadenza)}}
 					</div>
 				</div>

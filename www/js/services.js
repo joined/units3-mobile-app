@@ -105,6 +105,7 @@ angular.module('units3.services', ['base64'])
 })
 
 .service('Updater', function(Utils, CordovaNetwork, WebApi, localStorageService) {
+	this.hideIcon = false;
 	this.refreshIcon = 'ion-refresh';
 
 	Updater = this;
@@ -126,12 +127,12 @@ angular.module('units3.services', ['base64'])
 				function(result) {
 					// Handle success
 					Updater.refreshIcon = 'ion-refresh';
-					
+
 					Utils.saveData(user, result.data);
 				}, 
 				function(result) {
 					// Handle error
-					Updater.refreshIcon = 'ion-refresh';
+					Updater.refreshIcon = 'ion-alert-circled';
 
 					// Utils.showAlert('Errore di rete');
 				}

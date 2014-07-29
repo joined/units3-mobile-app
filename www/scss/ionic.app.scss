@@ -14,6 +14,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 
 /***** POST-CONFIG *************************/
+div.card div.row { padding: 0; }
+
 div.staylogged {
 	font-size: 10pt;
 }
@@ -22,36 +24,19 @@ ion-content {
 	background-color: #f5f5f5;
 }
 
+.normal-weight { font-weight: normal; }
+
 div.col {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+
+	&.col-align-right { text-align: right; }
+
+	&.col-data-esame { text-align: center; }
 }
 
 a { cursor: pointer; }
-
-div.col-data-esame {
-	text-align: center;
-	font-weight: normal;
-	font-size: 11pt;
-}
-
-div.col-crediti {
-	font-weight: normal;
-	font-size: 10pt;
-}
-
-div.row-esame { padding: 0; }
-
-div.card-tassa {
-	div.row {
-		padding: 0;
-	}
-	div.col-data-scadenza, div.col-pagamento-tassa {
-		text-align: right;
-		font-weight: normal;
-	}
-}
 
 .home-list {
 	ion-item { padding: 5px; }
