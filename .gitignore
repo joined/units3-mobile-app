@@ -10,3 +10,4 @@ www/lib
 www/css
 app*.zip
 phonegap-build.yaml
+dist/
