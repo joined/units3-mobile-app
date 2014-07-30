@@ -1,3 +1,6 @@
+// This file is used to trigger the online PhoneGap Build service,
+// uploading the zipped project and downloading the app which is built.
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -30,11 +33,17 @@ module.exports = function(grunt) {
           {
           cwd: 'www/',
           expand: true,
-          src: ['index.html', 'config.xml', 'css/ionic.app.min.css',
-                'img/**', 'js/**', 'templates/**',
+          src: ['index.html',
+                'config.xml', 
+                'css/ionic.app.min.css',
+                'img/**',
+                'js/**',
+                'templates/**',
                 'lib/angular-base64/angular-base64.min.js',
                 'lib/angular-local-storage/angular-local-storage.min.js',
-                'lib/ionic/fonts/*', 'lib/ionic/js/ionic.bundle.min.js']
+                'lib/ionic/fonts/*',
+                'lib/ionic/js/ionic.bundle.min.js'
+               ]
           },
         ]
       }
