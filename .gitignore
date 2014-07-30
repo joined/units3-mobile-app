@@ -8,5 +8,4 @@ codekit-cache/
 config.codekit
 www/lib
 www/css
-Gruntfile.js
 app*.zip
