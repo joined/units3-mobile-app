@@ -6,3 +6,7 @@ coverage/
 platforms/
 codekit-cache/
 config.codekit
+www/lib
+www/scss
+Gruntfile.js
+app*.zip
