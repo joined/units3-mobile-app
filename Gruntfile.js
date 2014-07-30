@@ -2,16 +2,24 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    config: grunt.file.readYAML('phonegap-build.yaml'),
     "phonegap-build": {
       debug: {
         options: {
-          archive: 'app.zip',
-          "appId": "1028311",
+          archive: "app.zip",
+          "appId": "<%= config.appId %>",
           "user": {
-            "email": "gasparini.lorenzo@gmail.com"
+            "email": "<%= config.email %>"
+          },
+          download: {
+            android: 'dist/units3-debug-<%= grunt.template.today("yyyy-mm-dd.HH-MM") %>.apk'
           }
         }
       }
+    },
+    clean: {
+      dist: ["dist/*"],
+      appzip: ["app.zip"]
     },
     compress: {
       main: {
@@ -36,7 +44,8 @@ module.exports = function(grunt) {
   // Load tasks.
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-phonegap-build');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Default task.
-  grunt.registerTask('default', ['compress', 'phonegap-build:debug']);
+  grunt.registerTask('default', ['clean:dist', 'compress', 'phonegap-build:debug', 'clean:appzip']);
 };

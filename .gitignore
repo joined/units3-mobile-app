@@ -9,3 +9,4 @@ config.codekit
 www/lib
 www/css
 app*.zip
+phonegap-build.yaml
