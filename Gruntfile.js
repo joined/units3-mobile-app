@@ -20,6 +20,13 @@ module.exports = function(grunt) {
         }
       }
     },
+    mkdir: {
+      dist: {
+        options: {
+          create: ['dist']
+        }
+      }
+    },
     clean: {
       dist: ["dist/*"],
       appzip: ["app.zip"]
@@ -54,7 +61,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-phonegap-build');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-mkdir');
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'compress', 'phonegap-build:debug', 'clean:appzip']);
+  grunt.registerTask('default', ['clean:dist', 'mkdir:dist', 'compress', 'phonegap-build:debug', 'clean:appzip']);
 };
