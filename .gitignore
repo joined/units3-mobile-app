@@ -7,6 +7,6 @@ platforms/
 codekit-cache/
 config.codekit
 www/lib
-www/scss
+www/css
 Gruntfile.js
 app*.zip
