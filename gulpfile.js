@@ -13,8 +13,6 @@ var paths = {
   www: ['./www/']
 };
 
-gulp.task('default', ['sass']);
-
 gulp.task('sass', function(done) {
   gulp.src('./www/scss/ionic.app.scss')
     .pipe(sass())
@@ -27,15 +25,12 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
-gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
-});
-
 gulp.task('serve', function() {
+  gulp.start('sass');
+  gulp.watch(paths.sass, ['sass']);
+
   gulp.src(paths.www + "index.html")
     .pipe(open("", { url: "http://localhost:8000" }));
-
-  gulp.watch(paths.sass, ['sass']);
 
   gulp.src(paths.www)
     .pipe(webserver({
