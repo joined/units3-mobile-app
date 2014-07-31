@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    config: grunt.file.readYAML('phonegap-build.yaml'),
+    config: grunt.file.exists('phonegap-build.yaml') ? grunt.file.readYAML('phonegap-build.yaml') : {},
     "phonegap-build": {
       debug: {
         options: {
