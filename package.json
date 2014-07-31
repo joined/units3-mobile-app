@@ -2,6 +2,10 @@
   "name": "units3",
   "version": "1.0.0",
   "description": "An Ionic project",
+  "repository" : {
+    "type" : "git",
+    "url" : "http://github.com/joined/units3-mobile-app"
+  },
   "dependencies": {
   },
   "devDependencies": {
