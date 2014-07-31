@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     minifyCss = require('gulp-minify-css'),
     rename = require('gulp-rename'),
+    vsh = require('shelljs'),
     webserver = require('gulp-webserver'),
     open = require("gulp-open");
 
