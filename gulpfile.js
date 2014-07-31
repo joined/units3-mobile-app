@@ -1,14 +1,17 @@
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var bower = require('bower');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
-var rename = require('gulp-rename');
-var sh = require('shelljs');
+var gulp = require('gulp'),
+    gutil = require('gulp-util'),
+    bower = require('bower'),
+    concat = require('gulp-concat'),
+    sass = require('gulp-sass'),
+    minifyCss = require('gulp-minify-css'),
+    rename = require('gulp-rename'),
+    vsh = require('shelljs'),
+    webserver = require('gulp-webserver'),
+    open = require("gulp-open");
 
 var paths = {
-  sass: ['./www/scss/**/*.scss']
+  sass: ['./www/scss/**/*.scss'],
+  www: ['./www/']
 };
 
 gulp.task('default', ['sass']);
@@ -27,6 +30,18 @@ gulp.task('sass', function(done) {
 
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
+});
+
+gulp.task('serve', function() {
+  gulp.src(paths.www + "index.html")
+    .pipe(open("", { url: "http://localhost:8000" }));
+
+  gulp.watch(paths.sass, ['sass']);
+
+  gulp.src(paths.www)
+    .pipe(webserver({
+      livereload: true
+    }));
 });
 
 gulp.task('install', ['git-check'], function() {

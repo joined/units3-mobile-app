@@ -4,43 +4,53 @@ units3-mobile-app
 ## Installation
 
 ```bash
-$ sudo npm install -g cordova ionic gulp
+$ npm install -g cordova gulp grunt
 $ git clone https://github.com/joined/units3-mobile-app
 $ cd units3-mobile-app
 $ npm install && gulp install
 ```
 
-## SCSS
+## Development server
 
-This project uses SCSS. You can use gulp to compile one-time or watch the folders.
-
-```bash
-$ gulp watch                                                                                                                     
- [17:59:47] Using gulpfile ~/units3-mobile-app/gulpfile.js
- [17:59:47] Starting 'watch'...
- [17:59:47] Finished 'watch' after 7.95 ms
- [18:00:36] Starting 'sass'...
- [18:00:37] Finished 'sass' after 490 ms
-```
-
-## Local developement server
+This project uses SCSS. To serve the project you can use `gulp serve` which starts a development server
+with livereload and compiles SCSS files when they change.
 
 ```bash
-$ ionic serve
- Running dev server at http://localhost:8100
- ...
+$ gulp serve
+[11:00:17] Using gulpfile /units3-mobile-app/gulpfile.js
+[11:00:17] Starting 'serve'...
+[11:00:17] Webserver started at http://localhost:8000
+[11:00:17] Finished 'serve' after 19 ms
+[11:00:24] Starting 'sass'...
+[11:00:24] Finished 'sass' after 444 ms
 ```
 
 ## Android emulate
 
 ```bash
-$ ionic platform add android
-$ ionic emulate android
+$ cordova platform add android
+$ cordova emulate android
 ```
 
 ## iOS emulate
 
 ```bash
-$ ionic platform add ios
-$ ionic emulate ios
+$ cordova platform add ios
+$ cordova emulate ios
 ```
+
+## Compile with online PhoneGap Build
+
+Go to [https://build.phonegap.com](PhoneGap Build website) and create an account.
+
+The first time use `grunt compress` to create a compressed archive (`app.zip`) and upload it to PhoneGap build website
+creating a new app.
+
+Then you can take the App ID and put it into `phonegap-build.yaml` together with your email (see the sample for the format).
+
+Now you can trigger a new build with `grunt pgbuild`. This does the following tasks:
+
++ creates a compressed archive
++ uploads it to PhoneGap Build service
++ waits for the compiled app
++ downloads it into `dist/` folder.

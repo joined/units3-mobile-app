@@ -64,5 +64,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mkdir');
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'mkdir:dist', 'compress', 'phonegap-build:debug', 'clean:appzip']);
+  grunt.registerTask('pgbuild',
+                    ['clean:dist',
+                     'mkdir:dist',
+                     'compress',
+                     'phonegap-build:debug',
+                     'clean:appzip'
+                    ]);
 };
