@@ -4,25 +4,36 @@ units3-mobile-app
 ## Installation
 
 ```bash
-$ npm install -g cordova gulp grunt
+$ npm install -g cordova grunt bower
 $ git clone https://github.com/joined/units3-mobile-app
 $ cd units3-mobile-app
-$ npm install && gulp install
+$ npm install && bower install
 ```
 
 ## Development server
 
-This project uses SCSS. To serve the project you can use `gulp serve` which starts a development server
+This project uses SCSS. To serve the project you can use `grunt serve` which starts a development server
 with livereload and compiles SCSS files when they change.
 
 ```bash
-$ gulp serve
-[11:00:17] Using gulpfile /units3-mobile-app/gulpfile.js
-[11:00:17] Starting 'serve'...
-[11:00:17] Webserver started at http://localhost:8000
-[11:00:17] Finished 'serve' after 19 ms
-[11:00:24] Starting 'sass'...
-[11:00:24] Finished 'sass' after 444 ms
+$ grunt serve
+Running "serve" task
+
+Running "connect:server" (connect) task
+Started connect web server on http://127.0.0.1:9000
+
+Running "watch" task
+Waiting...
+>> File "www/scss/ionic.app.scss" changed.
+
+Running "sass:dist" (sass) task
+File www/css/ionic.app.css created.
+
+Running "cssmin:minify" (cssmin) task
+File www/css/ionic.app.min.css created: 208.21 kB → 160.27 kB
+
+Running "watch" task
+Completed in 3.848s at Sat Aug 02 2014 15:49:41 GMT+0200 (CEST) - Waiting...
 ```
 
 ## Android emulate
