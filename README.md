@@ -59,7 +59,7 @@ creating a new app.
 
 Then you can take the App ID and put it into `phonegap-build.yaml` together with your email (see the sample for the format).
 
-Now you can trigger a new build with `grunt pgbuild`. This does the following tasks:
+Now you can trigger a new build with `grunt onlinebuild`. This does the following tasks:
 
 + creates a compressed archive
 + uploads it to PhoneGap Build service
