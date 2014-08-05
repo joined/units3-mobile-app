@@ -2,6 +2,12 @@
 // uploading the zipped project and downloading the app which is built.
 
 module.exports = function (grunt) {
+	var generateCSSifNone = function () {
+		if (!grunt.file.exists('www/css/ionic.app.min.css')) {
+			grunt.task.run(['sass:dist', 'cssmin']);
+		}
+	};
+
 	// Project configuration
 	grunt.initConfig({
 		connect: {
@@ -103,22 +109,28 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-	grunt.registerTask('serve', function() {
-		if (!grunt.file.exists('www/css/ionic.app.min.css')) {
-			grunt.task.run(['sass:dist', 'cssmin']);
-		}
+	grunt.registerTask('serve', 'Starts a server with LiveReload and opens web page', function() {
+		generateCSSifNone();
+
 		grunt.task.run(['connect', 'watch']);
 	});
 
+	grunt.registerTask('mkzip', 'Create a zip archive for upload to Phonegap Build service', function() {
+		generateCSSifNone();
+
+		grunt.task.run('compress');
+	})
+
 	// Default task.
-	grunt.registerTask('onlinebuild', function() {
+	grunt.registerTask('onlinebuild', 'Uploads app to Phonegap Build service and downloads compiled project', function() {
 		if (!grunt.file.exists('phonegap-build.yaml')) {
 			grunt.fail.fatal("Build config file not found.");
 		} else {
 			grunt.config.set("pginfo", grunt.file.readYAML('phonegap-build.yaml'));
+
 			grunt.task.run(['clean:dist',
 							'mkdir:dist',
-							'compress',
+							'mkzip',
 							'phonegap-build:debug',
 							'clean:appzip']
 			);

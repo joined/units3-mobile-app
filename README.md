@@ -54,7 +54,7 @@ $ cordova emulate ios
 
 Go to [https://build.phonegap.com](PhoneGap Build website) and create an account.
 
-The first time use `grunt compress` to create a compressed archive (`app.zip`) and upload it to PhoneGap build website
+The first time use `grunt mkzip` to create a compressed archive (`app.zip`) and upload it to PhoneGap build website
 creating a new app.
 
 Then you can take the App ID and put it into `phonegap-build.yaml` together with your email (see the sample for the format).
