@@ -143,7 +143,7 @@ angular.module('units3.services', ['base64'])
 	Esami = this;
 
 	this.getColor = function(voto) {
-		if (isNaN(voto)) return 'black';
+		if (isNaN(voto) || voto == "30L") return Esami.getColor(30);
 		else {
 			conv = (voto - 18) * 0.03;
 			RGB = Esami.HSLtoRGB(conv, 1, 0.35);
