@@ -4,7 +4,7 @@ units3-mobile-app
 ## Installation
 
 ```bash
-$ npm install -g cordova grunt bower
+$ npm install -g cordova grunt-cli bower
 $ git clone https://github.com/joined/units3-mobile-app
 $ cd units3-mobile-app
 $ npm install && bower install
